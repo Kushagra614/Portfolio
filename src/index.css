@@ -63,7 +63,8 @@
 
   body {
     @apply bg-background text-foreground font-mono antialiased;
-    background: var(--gradient-dark);
+    background: linear-gradient(180deg, hsl(0 0% 2%) 0%, hsl(0 0% 6%) 40%, hsl(120 15% 8%) 100%);
+    background-attachment: fixed;
     min-height: 100vh;
   }
 
