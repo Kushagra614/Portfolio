@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, ChevronDown, Zap, Code2, Cpu } from 'lucide-react';
 import TypingText from './TypingText';
+import LiveOrderbook from './LiveOrderbook';
 
 const Hero = () => {
   const [showSubtitle, setShowSubtitle] = useState(false);
@@ -92,15 +93,22 @@ const Hero = () => {
                 <span className="text-muted-foreground">whoami</span>
                 <div className="mt-3 text-foreground">
                   <TypingText 
-                    text='→ Software Developer Intern @ SRHFT | Building ultra-low-latency trading infrastructure'
+                    text='→ Performance-driven software engineer specializing in ultra-low-latency HFT infrastructure with expertise in C++, system design, and microsecond-scale optimization'
                     delay={500}
-                    speed={25}
+                    speed={20}
                   />
                 </div>
                 <div className="mt-4 text-foreground">
                   <span className="text-primary">$</span>{' '}
-                  <span className="text-muted-foreground">specialization</span>
-                  <div className="mt-2 text-primary/80">→ High-Frequency Trading | C++ | Networking | Performance Optimization</div>
+                  <span className="text-muted-foreground">highlights</span>
+                  <div className="mt-2 space-y-1 text-primary/90">
+                    <div>→ Software Developer Intern @ SRHFT | 35% latency variance reduction</div>
+                    <div>→ IPC pipelines processing 100K+ events/second | sub-microsecond precision</div>
+                    <div>→ Published in IEEE ICICNIS | Backtesting engine with 40% latency gains</div>
+                  </div>
+                </div>
+                <div className="mt-6 pt-4 border-t border-border/30">
+                  <LiveOrderbook />
                 </div>
               </div>
             </div>
