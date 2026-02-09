@@ -9,12 +9,31 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <main>
-        <Hero />
-        <MetricsDashboard />
-        <Projects />
-        <Skills />
-        <Contact />
+      <main className="relative">
+        {/* Hero Section */}
+        <section className="relative z-10">
+          <Hero />
+        </section>
+
+        {/* Metrics Section */}
+        <section className="relative z-10 py-8">
+          <MetricsDashboard />
+        </section>
+
+        {/* Projects Section */}
+        <section className="relative z-10 py-8">
+          <Projects />
+        </section>
+
+        {/* Skills Section */}
+        <section className="relative z-10 py-8">
+          <Skills />
+        </section>
+
+        {/* Contact Section */}
+        <section className="relative z-10 py-8">
+          <Contact />
+        </section>
       </main>
     </div>
   );
