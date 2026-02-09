@@ -54,7 +54,7 @@ const Hero = () => {
         <div className="h-auto mb-12">
           {showSubtitle && (
             <p className="text-base text-secondary-foreground animate-fade-in delay-200 font-light">
-              VIT Bhopal University '26 | CGPA: <span className="text-primary font-semibold">8.48</span>
+              VIT Bhopal University '26
             </p>
           )}
         </div>
