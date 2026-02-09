@@ -60,7 +60,7 @@ const LiveOrderbook = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const maxSize = Math.max(...bids.map((b) => b.total), ...asks.map((a) => a.total)) || 1;
+  const maxSize = Math.max(...(bids.length > 0 ? bids.map((b) => b.total) : [1]), ...(asks.length > 0 ? asks.map((a) => a.total) : [1])) || 1;
 
   return (
     <div className="w-full max-w-2xl mx-auto">

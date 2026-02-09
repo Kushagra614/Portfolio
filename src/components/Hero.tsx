@@ -107,13 +107,17 @@ const Hero = () => {
                     <div>→ Published in IEEE ICICNIS | Backtesting engine with 40% latency gains</div>
                   </div>
                 </div>
-                <div className="mt-6 pt-4 border-t border-border/30">
-                  <LiveOrderbook />
-                </div>
               </div>
             </div>
           )}
         </div>
+
+        {/* Orderbook Visualization */}
+        {showWhoami && (
+          <div className="max-w-2xl mx-auto mt-8 text-left">
+            <LiveOrderbook />
+          </div>
+        )}
 
         {/* Social Links */}
         {showLinks && (
