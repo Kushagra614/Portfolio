@@ -16,22 +16,22 @@ const Index = () => {
         </section>
 
         {/* Metrics Section */}
-        <section className="relative z-10 py-8">
+        <section className="relative z-10 -mt-8">
           <MetricsDashboard />
         </section>
 
         {/* Projects Section */}
-        <section className="relative z-10 py-8">
+        <section className="relative z-10 -mt-8">
           <Projects />
         </section>
 
         {/* Skills Section */}
-        <section className="relative z-10 py-8">
+        <section className="relative z-10 -mt-8">
           <Skills />
         </section>
 
         {/* Contact Section */}
-        <section className="relative z-10 py-8">
+        <section className="relative z-10 -mt-8">
           <Contact />
         </section>
       </main>
