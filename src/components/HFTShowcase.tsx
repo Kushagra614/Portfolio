@@ -122,38 +122,23 @@ const HFTShowcase = () => {
           </div>
         </div>
 
-        {/* Code Showcase */}
-        <div className="relative group">
-          <div className="p-6 rounded-lg border border-border/50 card-gradient animate-fade-in overflow-hidden">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-destructive/80" />
-              <div className="w-3 h-3 rounded-full bg-warning/80" />
-              <div className="w-3 h-3 rounded-full bg-primary/80" />
-              <span className="ml-2 text-xs text-muted-foreground">c++ | hft-infrastructure</span>
-            </div>
-            
-            <pre className="text-xs md:text-sm text-muted-foreground overflow-x-auto">
-              <code>{`// Ultra-low latency event processing pipeline
-class EventProcessor {
-  // Lock-free queue for 2M+ events/second
-  std::atomic<uint64_t> sequence_{0};
-  
-  // Inline processing to eliminate virtual calls
-  __forceinline void process(const Order& order) {
-    // ~200ns per event at SRHFT
-    auto result = strategy_.evaluate(order);
-    execution_engine_.submit(result);
-  }
-  
-  // SIMD-optimized aggregation
-  __m256i process_batch(__m256i orders) {
-    return _mm256_add_epi32(orders, threshold_);
-  }
-};
-
-// Achieved: ~10-50 microsecond latency`}</code>
-            </pre>
-          </div>
+        {/* Key Achievements */}
+        <div className="relative mb-12 p-6 rounded-lg border border-primary/30 bg-primary/5">
+          <h3 className="text-xl font-bold text-primary mb-4">Key Achievements @ SRHFT</h3>
+          <ul className="space-y-3 text-muted-foreground">
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">→</span>
+              <span>Reduced latency variance by <strong className="text-primary">35%</strong> through cache optimization and NUMA-aware scheduling</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">→</span>
+              <span>Designed lock-free IPC pipelines processing <strong className="text-primary">100K+ events/second</strong> with sub-microsecond precision</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">→</span>
+              <span>Implemented SIMD-optimized order matching engine achieving <strong className="text-primary">&lt;50ns</strong> per match</span>
+            </li>
+          </ul>
         </div>
 
         {/* Tech Stack */}
