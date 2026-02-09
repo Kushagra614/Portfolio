@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, ChevronDown, Zap, Code2, Cpu } from 'lucide-react';
 import TypingText from './TypingText';
 
 const Hero = () => {
   const [showSubtitle, setShowSubtitle] = useState(false);
   const [showWhoami, setShowWhoami] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
+  const [showBadges, setShowBadges] = useState(false);
 
   useEffect(() => {
     const timers = [
       setTimeout(() => setShowSubtitle(true), 1500),
       setTimeout(() => setShowWhoami(true), 2500),
+      setTimeout(() => setShowBadges(true), 3000),
       setTimeout(() => setShowLinks(true), 3500),
     ];
     return () => timers.forEach(clearTimeout);
@@ -22,13 +24,13 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden py-20">
       {/* Background effects */}
       <div className="absolute inset-0 grid-pattern opacity-30" />
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-20"
         style={{
-          background: 'radial-gradient(circle, hsl(120 100% 55% / 0.1) 0%, transparent 70%)'
+          background: 'radial-gradient(circle, hsl(200 100% 50% / 0.1) 0%, transparent 70%)'
         }}
       />
       
@@ -39,11 +41,11 @@ const Hero = () => {
           <span className="text-primary glow-text">VARDHAN</span>
         </h1>
 
-        {/* Subtitle */}
+        {/* Subtitle with focus on HFT & C++ */}
         <div className="h-8 mb-8">
           {showSubtitle && (
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground tracking-widest uppercase animate-fade-in">
-              Low-Latency C++ | HFT Infrastructure | Systems Engineering
+              HFT Infrastructure Architect | Ultra Low-Latency C++ | Systems Engineer
             </p>
           )}
         </div>
@@ -57,11 +59,29 @@ const Hero = () => {
           )}
         </div>
 
+        {/* Skills Badges with HFT focus */}
+        {showBadges && (
+          <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm hover:border-primary/60 transition-all duration-300 cursor-default">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm text-primary font-semibold">2M+ Events/sec</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm hover:border-primary/60 transition-all duration-300 cursor-default">
+              <Code2 className="w-4 h-4 text-primary" />
+              <span className="text-sm text-primary font-semibold">C++17/20</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm hover:border-primary/60 transition-all duration-300 cursor-default">
+              <Cpu className="w-4 h-4 text-primary" />
+              <span className="text-sm text-primary font-semibold">Microsecond Latency</span>
+            </div>
+          </div>
+        )}
+
         {/* Terminal whoami */}
         <div className="max-w-2xl mx-auto mb-12 text-left">
           {showWhoami && (
             <div className="p-4 sm:p-6 rounded-lg border border-border/50 card-gradient animate-fade-in">
-            <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 rounded-full bg-destructive/80" />
                 <div className="w-3 h-3 rounded-full bg-warning/80" />
                 <div className="w-3 h-3 rounded-full bg-primary/80" />
@@ -72,10 +92,15 @@ const Hero = () => {
                 <span className="text-muted-foreground">whoami</span>
                 <div className="mt-3 text-foreground">
                   <TypingText 
-                    text='→ "Software Developer Intern @ SRHFT | 2M+ events/sec systems"'
+                    text='→ Software Developer Intern @ SRHFT | Building ultra-low-latency trading infrastructure'
                     delay={500}
-                    speed={30}
+                    speed={25}
                   />
+                </div>
+                <div className="mt-4 text-foreground">
+                  <span className="text-primary">$</span>{' '}
+                  <span className="text-muted-foreground">specialization</span>
+                  <div className="mt-2 text-primary/80">→ High-Frequency Trading | C++ | Networking | Performance Optimization</div>
                 </div>
               </div>
             </div>

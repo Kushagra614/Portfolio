@@ -243,8 +243,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px hsl(120 100% 55% / 0.2); }
-    50% { box-shadow: 0 0 40px hsl(120 100% 55% / 0.4); }
+    0%, 100% { box-shadow: 0 0 20px hsl(200 100% 50% / 0.2); }
+    50% { box-shadow: 0 0 40px hsl(200 100% 50% / 0.4); }
   }
 
   @keyframes float {
@@ -280,4 +280,54 @@
   .delay-600 { animation-delay: 600ms; }
   .delay-700 { animation-delay: 700ms; }
   .delay-800 { animation-delay: 800ms; }
+
+  /* HFT & C++ Themed Animations */
+  @keyframes trading-pulse {
+    0% { 
+      box-shadow: 0 0 10px hsl(200 100% 50% / 0.3),
+                  inset 0 0 10px hsl(200 100% 50% / 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 25px hsl(200 100% 50% / 0.6),
+                  inset 0 0 20px hsl(200 100% 50% / 0.2);
+    }
+    100% { 
+      box-shadow: 0 0 10px hsl(200 100% 50% / 0.3),
+                  inset 0 0 10px hsl(200 100% 50% / 0.1);
+    }
+  }
+
+  @keyframes latency-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes binary-flow {
+    0% { transform: translateX(-100%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+  }
+
+  @keyframes circuit-glow {
+    0% { filter: drop-shadow(0 0 5px hsl(200 100% 50% / 0.3)); }
+    50% { filter: drop-shadow(0 0 15px hsl(200 100% 50% / 0.8)); }
+    100% { filter: drop-shadow(0 0 5px hsl(200 100% 50% / 0.3)); }
+  }
+
+  .animate-trading-pulse {
+    animation: trading-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-latency-blink {
+    animation: latency-blink 1.5s ease-in-out infinite;
+  }
+
+  .animate-binary-flow {
+    animation: binary-flow 3s ease-in infinite;
+  }
+
+  .animate-circuit-glow {
+    animation: circuit-glow 3s ease-in-out infinite;
+  }
 }
