@@ -36,42 +36,42 @@ const Hero = () => {
       
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Name */}
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-8 animate-fade-in leading-none">
           <span className="text-foreground">KUSHAGRA</span>{' '}
           <span className="text-primary glow-text">VARDHAN</span>
         </h1>
 
         {/* Subtitle with focus on HFT & C++ */}
-        <div className="h-8 mb-8">
+        <div className="h-auto mb-12">
           {showSubtitle && (
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground tracking-widest uppercase animate-fade-in">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground tracking-wide uppercase animate-fade-in font-light letter-spacing">
               HFT Infrastructure Architect | Ultra Low-Latency C++ | Systems Engineer
             </p>
           )}
         </div>
 
         {/* Education */}
-        <div className="h-6 mb-10">
+        <div className="h-auto mb-12">
           {showSubtitle && (
-            <p className="text-sm text-secondary-foreground animate-fade-in delay-200">
-              VIT Bhopal University '26 | CGPA: <span className="text-primary">8.48</span>
+            <p className="text-base text-secondary-foreground animate-fade-in delay-200 font-light">
+              VIT Bhopal University '26 | CGPA: <span className="text-primary font-semibold">8.48</span>
             </p>
           )}
         </div>
 
         {/* Skills Badges with HFT focus */}
         {showBadges && (
-          <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm hover:border-primary/60 transition-all duration-300 cursor-default">
-              <Zap className="w-4 h-4 text-primary" />
+          <div className="flex flex-wrap justify-center gap-4 mb-16 animate-fade-in">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-primary/40 bg-primary/8 backdrop-blur-md hover:border-primary/70 hover:bg-primary/12 transition-all duration-300 cursor-default group/badge hover:scale-105">
+              <Zap className="w-5 h-5 text-primary group-hover/badge:animate-pulse" />
               <span className="text-sm text-primary font-semibold">2M+ Events/sec</span>
             </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm hover:border-primary/60 transition-all duration-300 cursor-default">
-              <Code2 className="w-4 h-4 text-primary" />
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-primary/40 bg-primary/8 backdrop-blur-md hover:border-primary/70 hover:bg-primary/12 transition-all duration-300 cursor-default group/badge hover:scale-105">
+              <Code2 className="w-5 h-5 text-primary" />
               <span className="text-sm text-primary font-semibold">C++17/20</span>
             </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm hover:border-primary/60 transition-all duration-300 cursor-default">
-              <Cpu className="w-4 h-4 text-primary" />
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-primary/40 bg-primary/8 backdrop-blur-md hover:border-primary/70 hover:bg-primary/12 transition-all duration-300 cursor-default group/badge hover:scale-105">
+              <Cpu className="w-5 h-5 text-primary" />
               <span className="text-sm text-primary font-semibold">Microsecond Latency</span>
             </div>
           </div>
