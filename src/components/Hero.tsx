@@ -37,17 +37,17 @@ const Hero = () => {
               {/* Animated glow background */}
               <div className="absolute -inset-4 rounded-xl blur-3xl opacity-30 -z-10"
                 style={{
-                  background: 'radial-gradient(ellipse at left, hsl(200 100% 50% / 0.6) 0%, transparent 70%)',
+                  background: 'radial-gradient(ellipse at left, hsl(200 100% 50% / 0.6) 0%, hsl(190 80% 40% / 0.3) 50%, transparent 80%)',
                 }}
               />
               
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 bg-clip-text text-transparent drop-shadow-lg font-black">KUSHAGRA VARDHAN</span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight whitespace-nowrap overflow-hidden">
+                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent drop-shadow-lg font-black">KUSHAGRA VARDHAN</span>
               </h1>
             </div>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground tracking-wide mb-6 font-light">
+            <p className="text-base sm:text-lg md:text-xl bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent tracking-wide mb-6 font-semibold">
               HFT Infrastructure Architect
             </p>
             
@@ -59,15 +59,15 @@ const Hero = () => {
             <div className="space-y-3 mb-8">
               <div className="flex items-center gap-3 text-sm font-mono">
                 <ArrowRight className="w-4 h-4 text-cyan-400" />
-                <span><span className="text-cyan-400">2M+</span> events/sec processing</span>
+                <span><span className="text-cyan-400 font-bold">2M+</span> events/sec processing</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm font-mono">
+                <ArrowRight className="w-4 h-4 text-cyan-300" />
+                <span><span className="text-cyan-300 font-bold">&lt;50ns</span> sub-microsecond latency</span>
               </div>
               <div className="flex items-center gap-3 text-sm font-mono">
                 <ArrowRight className="w-4 h-4 text-blue-400" />
-                <span><span className="text-blue-400">&lt;50ns</span> sub-microsecond latency</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm font-mono">
-                <ArrowRight className="w-4 h-4 text-cyan-400" />
-                <span><span className="text-cyan-400">C++17/20</span> with lock-free patterns</span>
+                <span><span className="text-blue-400 font-bold">C++17/20</span> with lock-free patterns</span>
               </div>
             </div>
 
@@ -95,9 +95,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE - Retro Computer Image */}
+          {/* RIGHT SIDE - Image with Tech Stack */}
           <div className="hidden lg:flex items-center justify-center">
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full max-w-2xl">
               {/* Glow background */}
               <div className="absolute inset-0 rounded-2xl blur-3xl opacity-40 -z-10"
                 style={{
@@ -105,72 +105,35 @@ const Hero = () => {
                 }}
               />
 
-              {/* Retro Computer Image Container */}
-              <div className="relative rounded-2xl overflow-hidden border border-cyan-500/30 bg-background/50 backdrop-blur-xl p-6 shadow-2xl"
+              {/* Image Container */}
+              <div className="relative rounded-2xl overflow-hidden border border-cyan-500/30 bg-background/50 backdrop-blur-xl p-8 shadow-2xl"
                 style={{
                   boxShadow: '0 0 50px rgba(34, 211, 238, 0.2), inset 0 0 30px rgba(34, 211, 238, 0.1)'
                 }}
               >
-                <svg viewBox="0 0 800 600" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-                  {/* Computer base */}
-                  <rect x="120" y="150" width="450" height="320" rx="20" fill="#a0a0a0" stroke="#808080" strokeWidth="3"/>
-                  <rect x="130" y="160" width="430" height="300" rx="15" fill="#c8c8c8" />
-                  
-                  {/* Monitor screen */}
-                  <rect x="150" y="180" width="390" height="240" rx="8" fill="#000" />
-                  
-                  {/* Screen glow */}
-                  <rect x="150" y="180" width="390" height="240" rx="8" fill="url(#screenGradient)" opacity="0.8"/>
-                  
-                  {/* Green terminal text */}
-                  <text x="170" y="210" fontFamily="monospace" fontSize="12" fill="#00ff00" opacity="0.9">
-                    $ sudo ./hypertradex --mode=backtest
-                  </text>
-                  <text x="170" y="230" fontFamily="monospace" fontSize="11" fill="#00ff00" opacity="0.7">
-                    Initializing market environment...
-                  </text>
-                  <text x="170" y="250" fontFamily="monospace" fontSize="11" fill="#00ff00" opacity="0.7">
-                    Loading tick data: 10M+ events/sec
-                  </text>
-                  <text x="170" y="270" fontFamily="monospace" fontSize="11" fill="#00ff00" opacity="0.7">
-                    Cache optimization: NUMA-aware
-                  </text>
-                  <text x="170" y="290" fontFamily="monospace" fontSize="11" fill="#00ff00" opacity="0.7">
-                    Lock-free IPC ready: 100K+/sec throughput
-                  </text>
-                  <text x="170" y="310" fontFamily="monospace" fontSize="11" fill="#ffff00" opacity="0.8">
-                    Strategy loaded: VWAP + ML ensemble
-                  </text>
-                  <text x="170" y="330" fontFamily="monospace" fontSize="11" fill="#00ff00" opacity="0.7">
-                    Backtest complete: Sharpe 2.47
-                  </text>
-                  <text x="170" y="350" fontFamily="monospace" fontSize="11" fill="#00ff00" opacity="0.7">
-                    Latency: p99 &lt;50ns, mean 12ns
-                  </text>
-                  <text x="170" y="370" fontFamily="monospace" fontSize="11" fill="#00ff00" opacity="0.9">
-                    $ █
-                  </text>
+                <img 
+                  src="https://github.com/user-attachments/assets/2d72e414-3a3e-4445-b2af-62c07bd4b90d"
+                  alt="Developer workspace"
+                  className="w-full h-auto rounded-lg"
+                />
 
-                  {/* Keyboard */}
-                  <rect x="180" y="440" width="370" height="80" rx="8" fill="#d0d0d0" stroke="#808080" strokeWidth="2"/>
-                  <rect x="185" y="445" width="360" height="70" rx="6" fill="#e8e8e8" />
-                  
-                  {/* Screen reflection */}
-                  <circle cx="500" cy="250" r="40" fill="#fff" opacity="0.1" />
-                  
-                  {/* Define screen glow gradient */}
-                  <defs>
-                    <radialGradient id="screenGradient" cx="50%" cy="30%">
-                      <stop offset="0%" stopColor="#00ff00" stopOpacity="0.3"/>
-                      <stop offset="100%" stopColor="#0088ff" stopOpacity="0.1"/>
-                    </radialGradient>
-                  </defs>
-                </svg>
+                {/* Tech Stack Badges */}
+                <div className="mt-6 flex flex-wrap gap-3 justify-center">
+                  <div className="px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 text-sm font-mono font-bold hover:bg-cyan-500/30 transition-all">
+                    C++
+                  </div>
+                  <div className="px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/50 text-blue-300 text-sm font-mono font-bold hover:bg-blue-500/30 transition-all">
+                    Python
+                  </div>
+                  <div className="px-4 py-2 rounded-lg bg-cyan-600/20 border border-cyan-600/50 text-cyan-200 text-sm font-mono font-bold hover:bg-cyan-600/30 transition-all">
+                    SQL
+                  </div>
+                </div>
 
                 {/* Info badge below */}
-                <div className="mt-4 text-center">
-                  <p className="text-xs text-cyan-400 font-mono uppercase tracking-wider">Ultra-Low Latency System</p>
-                  <p className="text-xs text-muted-foreground mt-1">C++ | Lock-Free | SIMD Optimized</p>
+                <div className="mt-6 text-center">
+                  <p className="text-xs text-cyan-400 font-mono uppercase tracking-wider">C++ Developer</p>
+                  <p className="text-xs text-muted-foreground mt-1">Low-Latency | HFT | Computer Vision</p>
                 </div>
               </div>
             </div>

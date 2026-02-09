@@ -71,6 +71,14 @@ const Index = () => {
           </section>
 
           {/* Divider */}
+          <SectionDivider label="Technical_Stack" />
+
+          {/* Skills Section */}
+          <section className="relative z-10">
+            <Skills />
+          </section>
+
+          {/* Divider */}
           <SectionDivider label="Experience" />
 
           {/* Experience Section */}
@@ -84,14 +92,6 @@ const Index = () => {
           {/* Projects Section */}
           <section className="relative z-10">
             <Projects />
-          </section>
-
-          {/* Divider */}
-          <SectionDivider label="Technical_Stack" />
-
-          {/* Skills Section */}
-          <section className="relative z-10">
-            <Skills />
           </section>
 
           {/* Divider */}
