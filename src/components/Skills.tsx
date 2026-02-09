@@ -9,34 +9,34 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    label: 'Core Languages',
+    label: 'Programming Languages',
     icon: <Code2 className="w-5 h-5" />,
     skills: ['C++17/20', 'C', 'Python', 'SQL'],
-    description: 'Primary focus on modern C++ for HFT systems',
+    description: 'Core languages with expertise in modern C++',
   },
   {
-    label: 'HFT Specialization',
+    label: 'Frameworks & Libraries',
     icon: <Zap className="w-5 h-5" />,
-    skills: ['Ultra Low-Latency', 'Lock-free Structures', 'Zero-Copy', 'SIMD Optimization'],
-    description: 'Sub-microsecond latency optimization techniques',
+    skills: ['Boost', 'libcurl', 'nlohmann/json', 'chrono', 'STL', 'React.js', 'OpenCV', 'YOLOv8'],
+    description: 'High-performance and modern development tools',
   },
   {
-    label: 'Performance & Systems',
+    label: 'Developer Tools & Platforms',
     icon: <Gauge className="w-5 h-5" />,
-    skills: ['Memory Optimization', 'CPU Affinity', 'NUMA', 'Multithreading', 'Concurrency'],
-    description: 'Advanced system-level performance tuning',
+    skills: ['CMake', 'Make', 'Git', 'AWS', 'MySQL', 'Linux', 'Docker'],
+    description: 'DevOps, version control, and infrastructure',
   },
   {
-    label: 'Infrastructure',
+    label: 'HFT & Systems Specialization',
     icon: <Cpu className="w-5 h-5" />,
-    skills: ['Linux Kernel', 'TCP/UDP Networking', 'CMake', 'Git', 'AWS'],
-    description: 'Backend infrastructure and DevOps',
+    skills: ['Low-Latency Systems', 'Multi-threading', 'Lock-free Structures', 'Cache Optimization', 'Memory Layout Tuning'],
+    description: 'Advanced performance optimization techniques',
   },
   {
-    label: 'Trading & Markets',
+    label: 'Domain Expertise',
     icon: <Lock className="w-5 h-5" />,
-    skills: ['Algorithmic Trading', 'Market Microstructure', 'Order Matching', 'Risk Management'],
-    description: 'Domain expertise in financial systems',
+    skills: ['Algorithmic Trading', 'Market Microstructure', 'Computer Vision', 'Financial Systems', 'Real-time Processing'],
+    description: 'Specialized knowledge across multiple domains',
   },
 ];
 

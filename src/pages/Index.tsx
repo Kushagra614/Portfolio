@@ -4,6 +4,7 @@ import HFTShowcase from '@/components/HFTShowcase';
 import MetricsDashboard from '@/components/MetricsDashboard';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
+import Achievements from '@/components/Achievements';
 import Contact from '@/components/Contact';
 
 const Index = () => {
@@ -34,6 +35,11 @@ const Index = () => {
         {/* Skills Section */}
         <section className="relative z-10 -mt-8">
           <Skills />
+        </section>
+
+        {/* Achievements Section */}
+        <section className="relative z-10 -mt-8">
+          <Achievements />
         </section>
 
         {/* Contact Section */}
