@@ -55,15 +55,15 @@ const MetricsDashboard = () => {
     <section id="metrics" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6 hover:border-primary/60 transition-all animate-float-slow">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs text-primary uppercase tracking-wider">Live Metrics</span>
+            <span className="text-xs text-primary uppercase tracking-wider font-semibold">Live Metrics</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 animate-scale-pop">
             System <span className="text-primary glow-text">Performance</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto text-lg animate-fade-in" style={{ animationDelay: '200ms' }}>
             Real-world metrics from production-grade trading infrastructure
           </p>
         </div>
@@ -73,20 +73,28 @@ const MetricsDashboard = () => {
           {metrics.map((metric, index) => (
             <div 
               key={metric.label}
-              className="metric-card group"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="metric-card group animate-scale-pop relative overflow-hidden"
+              style={{ 
+                animationDelay: `${index * 80}ms`,
+                animationFillMode: 'both'
+              }}
             >
+              {/* Background glow on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+              </div>
+
               {/* Icon */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-2 rounded bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+              <div className="flex items-center justify-between mb-4 relative z-10">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 group-hover:animate-rotate-slow">
                   {metric.icon}
                 </div>
-                <div className="w-12 h-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
+                <div className="w-12 h-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full group-hover:from-primary group-hover:to-primary/30 transition-all duration-300" />
               </div>
 
               {/* Value */}
-              <div className="mb-2">
-                <span className="text-3xl sm:text-4xl font-bold text-foreground">
+              <div className="mb-3 relative z-10">
+                <span className="text-3xl sm:text-4xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                   <AnimatedCounter
                     end={metric.value}
                     duration={2000 + index * 200}
@@ -94,19 +102,19 @@ const MetricsDashboard = () => {
                     decimals={metric.decimals || 0}
                   />
                 </span>
-                <span className="text-lg text-primary ml-1">{metric.suffix}</span>
+                <span className="text-lg text-primary ml-2 group-hover:animate-pulse">{metric.suffix}</span>
               </div>
 
               {/* Label */}
-              <h3 className="text-sm font-medium text-foreground mb-1">
+              <h3 className="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300 relative z-10">
                 {metric.label}
               </h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground group-hover:text-secondary-foreground transition-colors duration-300 relative z-10">
                 {metric.description}
               </p>
 
               {/* Decorative line */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           ))}
         </div>

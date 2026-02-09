@@ -48,15 +48,15 @@ const Projects = () => {
     <section id="projects" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6 hover:border-primary/60 transition-all animate-float-slow">
             <Code2 className="w-4 h-4 text-primary" />
-            <span className="text-xs text-primary uppercase tracking-wider">Engineering</span>
+            <span className="text-xs text-primary uppercase tracking-wider font-semibold">Engineering</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 animate-scale-pop">
             Featured <span className="text-primary glow-text">Projects</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto text-lg animate-fade-in" style={{ animationDelay: '200ms' }}>
             Production-grade systems built for speed, reliability, and scale
           </p>
         </div>
@@ -66,8 +66,11 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
+              className="animate-scale-pop"
+              style={{ 
+                animationDelay: `${index * 100}ms`,
+                animationFillMode: 'both'
+              }}
             >
               <ProjectCard {...project} />
             </div>
