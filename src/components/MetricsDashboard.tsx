@@ -41,82 +41,97 @@ const metrics: Metric[] = [
     icon: <TrendingDown className="w-5 h-5" />,
     description: 'Variance reduction through optimization',
   },
-  {
-    label: 'Klines Processed',
-    value: 10,
-    suffix: 'K+ / sec',
-    icon: <BarChart3 className="w-5 h-5" />,
-    description: 'Real-time market data processing',
-  },
 ];
 
 const MetricsDashboard = () => {
   return (
-    <section id="metrics" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6 hover:border-primary/60 transition-all animate-float-slow">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs text-primary uppercase tracking-wider font-semibold">Live Metrics</span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 animate-scale-pop">
-            System <span className="text-primary glow-text">Performance</span>
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg animate-fade-in" style={{ animationDelay: '200ms' }}>
-            Real-world metrics from production-grade trading infrastructure
-          </p>
-        </div>
-
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {metrics.map((metric, index) => (
-            <div 
-              key={metric.label}
-              className="metric-card group animate-scale-pop relative overflow-hidden"
-              style={{ 
-                animationDelay: `${index * 80}ms`,
-                animationFillMode: 'both'
-              }}
-            >
-              {/* Background glow on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
-              </div>
-
-              {/* Icon */}
-              <div className="flex items-center justify-between mb-4 relative z-10">
-                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 group-hover:animate-rotate-slow">
-                  {metric.icon}
+    <section id="metrics" className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* LEFT: Description */}
+          <div className="text-left">
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              <span className="block">HFT & Ultra</span>
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 bg-clip-text text-transparent">
+                Low-Latency Performance
+              </span>
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Production-grade trading infrastructure optimized for microsecond-level precision. Real-world metrics from deployed systems achieving sub-microsecond latency with lock-free data structures and deterministic execution.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <span className="text-cyan-400 font-bold text-xl">→</span>
+                <div>
+                  <p className="font-semibold text-foreground">Ultra-Low Latency</p>
+                  <p className="text-sm text-muted-foreground">Microsecond precision with NUMA-aware CPU scheduling</p>
                 </div>
-                <div className="w-12 h-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full group-hover:from-primary group-hover:to-primary/30 transition-all duration-300" />
               </div>
-
-              {/* Value */}
-              <div className="mb-3 relative z-10">
-                <span className="text-3xl sm:text-4xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                  <AnimatedCounter
-                    end={metric.value}
-                    duration={2000 + index * 200}
-                    suffix=""
-                    decimals={metric.decimals || 0}
-                  />
-                </span>
-                <span className="text-lg text-primary ml-2 group-hover:animate-pulse">{metric.suffix}</span>
+              <div className="flex items-start gap-3">
+                <span className="text-blue-400 font-bold text-xl">→</span>
+                <div>
+                  <p className="font-semibold text-foreground">Deterministic Replay</p>
+                  <p className="text-sm text-muted-foreground">Nanosecond-level timing with lock-free execution</p>
+                </div>
               </div>
-
-              {/* Label */}
-              <h3 className="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300 relative z-10">
-                {metric.label}
-              </h3>
-              <p className="text-xs text-muted-foreground group-hover:text-secondary-foreground transition-colors duration-300 relative z-10">
-                {metric.description}
-              </p>
-
-              {/* Decorative line */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="flex items-start gap-3">
+                <span className="text-cyan-400 font-bold text-xl">→</span>
+                <div>
+                  <p className="font-semibold text-foreground">Throughput Optimization</p>
+                  <p className="text-sm text-muted-foreground">100K+ events/sec IPC with zero-copy semantics</p>
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* RIGHT: Metrics Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {metrics.map((metric, index) => (
+              <div 
+                key={metric.label}
+                className="metric-card group relative overflow-hidden"
+                style={{ 
+                  animationDelay: `${index * 80}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
+                {/* Background gradient on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 rounded-full blur-2xl" />
+                </div>
+
+                {/* Icon */}
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    {metric.icon}
+                  </div>
+                  <span className="text-xs font-mono text-muted-foreground bg-primary/5 px-2 py-1 rounded">
+                    {metric.label.toUpperCase().slice(0, 4)}
+                  </span>
+                </div>
+
+                {/* Value */}
+                <div className="mb-3 relative z-10">
+                  <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold mb-1">
+                    {metric.label}
+                  </p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-2xl md:text-3xl font-bold text-primary">
+                      <AnimatedCounter end={metric.value} decimals={metric.decimals} />
+                    </span>
+                    <span className="text-sm text-muted-foreground">{metric.suffix}</span>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-xs text-muted-foreground relative z-10">{metric.description}</p>
+
+                {/* Border animation */}
+                <div className="absolute inset-0 rounded-lg border border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

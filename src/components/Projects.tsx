@@ -1,5 +1,5 @@
 import ProjectCard from './ProjectCard';
-import { Code2 } from 'lucide-react';
+import { BacktestingChart, LiveOrderbook, CameraDetection, ChatVerseVisualization } from './ProjectVisualizations';
 
 const projects = [
   {
@@ -14,6 +14,7 @@ const projects = [
     ],
     highlight: '40% latency reduction via cache-line optimization',
     github: 'https://github.com/kushagra614',
+    visualization: 'backtest',
   },
   {
     title: 'MULTI-TYPE ORDERBOOK',
@@ -27,6 +28,7 @@ const projects = [
     ],
     highlight: 'Sub-microsecond deterministic matching',
     github: 'https://github.com/kushagra614',
+    visualization: 'orderbook',
   },
   {
     title: 'AUTO-PLATE RECOGNITION',
@@ -40,52 +42,87 @@ const projects = [
     ],
     highlight: '97.8% accuracy with 24ms/frame latency',
     github: 'https://github.com/kushagra614',
+    visualization: 'camera',
   },
   {
-    title: 'SRHFT',
-    subtitle: 'High-Frequency Trading Infrastructure Intern',
-    tech: ['Boost.Interprocess', 'Shared Memory', 'Lock-free DS', 'C++'],
+    title: 'CHATVERSE',
+    subtitle: 'Real-Time Chat Application',
+    tech: ['React.js', 'Firebase', 'Firestore', 'Google Auth', 'CSS3'],
     features: [
-      'High-performance simulation framework supporting 10+ strategies',
-      'Processing 2M+ market data events per simulation',
-      'Shared memory IPC pipelines: 100K+ events/sec throughput',
-      '35% latency variance reduction through lock-free structures',
+      'Google Authentication with secure session management',
+      'Real-time messaging with Firebase Firestore',
+      'Multiple chat rooms with dynamic room creation',
+      'Modern space-themed UI with responsive design',
     ],
-    date: 'Dec 2024 – Mar 2025',
-    isExperience: true,
+    highlight: '1.2K+ users across 50+ active rooms',
+    github: 'https://github.com/kushagra614/ChatVerse',
+    visualization: 'chatverse',
   },
 ];
 
 const Projects = () => {
+  const renderVisualization = (type: string) => {
+    switch(type) {
+      case 'backtest':
+        return <BacktestingChart />;
+      case 'orderbook':
+        return <LiveOrderbook />;
+      case 'camera':
+        return <CameraDetection />;
+      case 'chatverse':
+        return <ChatVerseVisualization />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <section id="projects" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6 hover:border-primary/60 transition-all animate-float-slow">
-            <Code2 className="w-4 h-4 text-primary" />
-            <span className="text-xs text-primary uppercase tracking-wider font-semibold">Engineering</span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 animate-scale-pop">
-            Featured <span className="text-primary glow-text">Projects</span>
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-black mb-4">
+            <span className="block">Featured</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 bg-clip-text text-transparent">
+              Projects
+            </span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg animate-fade-in" style={{ animationDelay: '200ms' }}>
-            Production-grade systems built for speed, reliability, and scale
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+            Production-grade systems built for speed, reliability, and scale. Each project paired with live visualizations.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Projects with Visualizations */}
+        <div className="space-y-12">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="animate-scale-pop"
-              style={{ 
-                animationDelay: `${index * 100}ms`,
-                animationFillMode: 'both'
-              }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
             >
-              <ProjectCard {...project} />
+              {/* Alternate layout: card on left for even, right for odd */}
+              {index % 2 === 0 ? (
+                <>
+                  {/* LEFT: Card */}
+                  <div className="animate-scale-pop" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'both' }}>
+                    <ProjectCard {...project} />
+                  </div>
+                  {/* RIGHT: Visualization */}
+                  <div className="hidden lg:block h-80">
+                    {renderVisualization(project.visualization)}
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* LEFT: Visualization */}
+                  <div className="hidden lg:block h-80 order-2">
+                    {renderVisualization(project.visualization)}
+                  </div>
+                  {/* RIGHT: Card */}
+                  <div className="animate-scale-pop order-1 lg:order-none" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'both' }}>
+                    <ProjectCard {...project} />
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>

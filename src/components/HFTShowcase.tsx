@@ -1,5 +1,47 @@
 import { useState, useEffect } from 'react';
-import { Activity, Zap, TrendingUp } from 'lucide-react';
+import { Activity, Zap, TrendingUp, Code, Cpu, Lock, BarChart3, Clock, TrendingDown } from 'lucide-react';
+import AnimatedCounter from './AnimatedCounter';
+
+interface Metric {
+  label: string;
+  value: number;
+  suffix: string;
+  decimals?: number;
+  icon: React.ReactNode;
+  description: string;
+}
+
+const metrics: Metric[] = [
+  {
+    label: 'Backtest Throughput',
+    value: 2.4,
+    suffix: 'M events/sec',
+    decimals: 1,
+    icon: <Activity className="w-5 h-5" />,
+    description: 'Ultra-high throughput backtesting engine',
+  },
+  {
+    label: 'IPC Throughput',
+    value: 100,
+    suffix: 'K+ events/sec',
+    icon: <Zap className="w-5 h-5" />,
+    description: 'Shared-memory inter-process communication',
+  },
+  {
+    label: 'Replay Jitter',
+    value: 847,
+    suffix: 'ns p99',
+    icon: <Clock className="w-5 h-5" />,
+    description: 'Nanosecond-level deterministic replay',
+  },
+  {
+    label: 'Latency Reduction',
+    value: 35,
+    suffix: '%',
+    icon: <TrendingDown className="w-5 h-5" />,
+    description: 'Variance reduction through optimization',
+  },
+];
 
 const HFTShowcase = () => {
   const [eventCount, setEventCount] = useState(0);
@@ -9,7 +51,6 @@ const HFTShowcase = () => {
     let eventInterval: NodeJS.Timeout;
     let latencyInterval: NodeJS.Timeout;
 
-    // Simulate event counter
     eventInterval = setInterval(() => {
       setEventCount(prev => {
         const newCount = prev + Math.floor(Math.random() * 50000) + 10000;
@@ -17,7 +58,6 @@ const HFTShowcase = () => {
       });
     }, 100);
 
-    // Simulate latency fluctuation
     latencyInterval = setInterval(() => {
       setLatency(Math.floor(Math.random() * 50) + 10);
     }, 500);
@@ -29,120 +69,113 @@ const HFTShowcase = () => {
   }, []);
 
   return (
-    <section className="relative py-12 px-6">
-      <div className="max-w-4xl mx-auto">
-        {/* Section Title */}
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 glow-text">
-            HFT & Ultra Low-Latency Systems
+    <section className="relative py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Title */}
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-black mb-4">
+            <span className="block">HFT & Ultra</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 bg-clip-text text-transparent">
+              Low-Latency Performance
+            </span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Building infrastructure that processes millions of market events with microsecond precision
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
+            Production-grade trading infrastructure optimized for microsecond-level precision. Real-world metrics from deployed systems achieving sub-microsecond latency with lock-free data structures and deterministic execution.
           </p>
         </div>
 
-        {/* Live Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {/* Events Per Second */}
-          <div className="relative group">
-            <div className="metric-card">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <p className="text-muted-foreground text-sm uppercase tracking-wider">Events/Sec</p>
-                  <h3 className="text-2xl md:text-3xl font-bold text-primary mt-2">
-                    {(eventCount / 1000000).toFixed(2)}M+
-                  </h3>
-                </div>
-                <Activity className="w-6 h-6 text-primary animate-latency-blink" />
+        {/* Two Column Layout - Left Text, Right Metrics Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+          {/* LEFT: Systems Overview */}
+          <div className="text-left space-y-6">
+            <h3 className="text-2xl font-bold text-foreground">Systems Architecture</h3>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Code className="w-5 h-5 text-cyan-400" />
+                <span>C++17/20 | Modern Systems Programming</span>
               </div>
-              <div className="w-full bg-border/30 rounded-full h-1 overflow-hidden">
-                <div 
-                  className="bg-primary h-full rounded-full transition-all duration-200 animate-circuit-glow"
-                  style={{ width: `${Math.min((eventCount / 2000000) * 100, 100)}%` }}
-                />
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Lock className="w-5 h-5 text-blue-400" />
+                <span>Lock-free data structures & NUMA-aware scheduling</span>
               </div>
-              <p className="text-xs text-muted-foreground mt-3">Real-time market events</p>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Cpu className="w-5 h-5 text-cyan-400" />
+                <span>CPU affinity & Cache optimization</span>
+              </div>
             </div>
-          </div>
 
-          {/* Latency */}
-          <div className="relative group">
-            <div className="metric-card">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <p className="text-muted-foreground text-sm uppercase tracking-wider">Latency</p>
-                  <h3 className="text-2xl md:text-3xl font-bold text-primary mt-2">
-                    {latency}
-                    <span className="text-lg">μs</span>
-                  </h3>
-                </div>
-                <Zap className="w-6 h-6 text-primary animate-trading-pulse" />
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">Microsecond precision</span>
-                  <span className="text-primary font-semibold">{latency}μs</span>
-                </div>
-                <div className="bg-border/30 rounded-full h-1">
-                  <div 
-                    className="bg-gradient-to-r from-primary to-primary/60 h-full rounded-full transition-all duration-100"
-                    style={{ width: `${(latency / 100) * 100}%` }}
-                  />
-                </div>
-              </div>
-              <p className="text-xs text-muted-foreground mt-3">Sub-microsecond targeting</p>
-            </div>
-          </div>
-
-          {/* C++ Performance */}
-          <div className="relative group">
-            <div className="metric-card">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <p className="text-muted-foreground text-sm uppercase tracking-wider">C++ Level</p>
-                  <h3 className="text-2xl md:text-3xl font-bold text-primary mt-2">C++17/20</h3>
-                </div>
-                <TrendingUp className="w-6 h-6 text-primary animate-circuit-glow" />
-              </div>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  Zero-copy semantics
+            {/* Key Achievements */}
+            <div className="relative p-6 rounded-lg border border-primary/30 bg-primary/5">
+              <h4 className="text-lg font-bold text-primary mb-4">Key Achievements</h4>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Reduced latency variance by <strong className="text-primary">35%</strong> through cache optimization and NUMA-aware scheduling</span>
                 </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  Lock-free data structures
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Designed lock-free IPC pipelines processing <strong className="text-primary">100K+ events/second</strong></span>
                 </li>
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  Memory optimization
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Implemented SIMD-optimized order matching engine achieving <strong className="text-primary">&lt;50ns</strong> per match</span>
                 </li>
               </ul>
             </div>
           </div>
+
+          {/* RIGHT: Live Metrics Grid (2x2) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {metrics.map((metric, index) => (
+              <div 
+                key={metric.label}
+                className="metric-card group relative overflow-hidden"
+                style={{ 
+                  animationDelay: `${index * 80}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
+                {/* Background gradient on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 rounded-full blur-2xl" />
+                </div>
+
+                {/* Icon */}
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    {metric.icon}
+                  </div>
+                  <span className="text-xs font-mono text-muted-foreground bg-primary/5 px-2 py-1 rounded">
+                    {metric.label.toUpperCase().slice(0, 4)}
+                  </span>
+                </div>
+
+                {/* Value */}
+                <div className="mb-3 relative z-10">
+                  <p className="text-muted-foreground text-xs uppercase tracking-wider font-semibold mb-1">
+                    {metric.label}
+                  </p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-2xl md:text-3xl font-bold text-primary">
+                      <AnimatedCounter end={metric.value} decimals={metric.decimals} />
+                    </span>
+                    <span className="text-sm text-muted-foreground">{metric.suffix}</span>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-xs text-muted-foreground relative z-10">{metric.description}</p>
+
+                {/* Border animation */}
+                <div className="absolute inset-0 rounded-lg border border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Key Achievements */}
-        <div className="relative mb-12 p-6 rounded-lg border border-primary/30 bg-primary/5">
-          <h3 className="text-xl font-bold text-primary mb-4">Key Achievements @ SRHFT</h3>
-          <ul className="space-y-3 text-muted-foreground">
-            <li className="flex items-start gap-3">
-              <span className="text-primary font-bold">→</span>
-              <span>Reduced latency variance by <strong className="text-primary">35%</strong> through cache optimization and NUMA-aware scheduling</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-primary font-bold">→</span>
-              <span>Designed lock-free IPC pipelines processing <strong className="text-primary">100K+ events/second</strong> with sub-microsecond precision</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-primary font-bold">→</span>
-              <span>Implemented SIMD-optimized order matching engine achieving <strong className="text-primary">&lt;50ns</strong> per match</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Tech Stack */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* Tech Stack Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { name: 'C++17/20', icon: '⚡' },
             { name: 'Linux Kernel', icon: '🐧' },
