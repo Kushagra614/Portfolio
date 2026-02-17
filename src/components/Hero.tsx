@@ -48,26 +48,30 @@ const Hero = () => {
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg md:text-xl bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent tracking-wide mb-6 font-semibold">
-              HFT Infrastructure Architect
+              Low Latency C++ Developer
             </p>
             
             <p className="text-sm sm:text-base text-secondary-foreground mb-8 leading-relaxed max-w-md">
-              Building ultra-low-latency trading systems with C++. Specializing in lock-free data structures, microsecond optimization, and high-performance market infrastructure.
+              Building ultra-low-latency trading systems. Specializing in lock-free data structures, multithreading, microsecond optimization, high-performance market infrastructure, and computer vision applications.
             </p>
 
             {/* Tech specs */}
             <div className="space-y-3 mb-8">
               <div className="flex items-center gap-3 text-sm font-mono">
                 <ArrowRight className="w-4 h-4 text-cyan-400" />
-                <span><span className="text-cyan-400 font-bold">2M+</span> events/sec processing</span>
+                <span><span className="text-cyan-400 font-bold">C++ 11/14/17/20</span> standards & modern features</span>
               </div>
               <div className="flex items-center gap-3 text-sm font-mono">
-                <ArrowRight className="w-4 h-4 text-cyan-300" />
-                <span><span className="text-cyan-300 font-bold">&lt;50ns</span> sub-microsecond latency</span>
+                <ArrowRight className="w-4 h-4 text-cyan-400" />
+                <span><span className="text-cyan-400 font-bold">Multi-threaded</span> architecture & synchronization</span>
               </div>
               <div className="flex items-center gap-3 text-sm font-mono">
-                <ArrowRight className="w-4 h-4 text-blue-400" />
-                <span><span className="text-blue-400 font-bold">C++17/20</span> with lock-free patterns</span>
+                <ArrowRight className="w-4 h-4 text-cyan-400" />
+                <span><span className="text-cyan-400 font-bold">Cache</span> <span className="text-cyan-400 font-bold">optimization</span> & memory efficiency</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm font-mono">
+                <ArrowRight className="w-4 h-4 text-cyan-400" />
+                <span><span className="text-cyan-400 font-bold">Computer</span> <span className="text-cyan-400 font-bold">Vision</span> & image processing</span>
               </div>
             </div>
 

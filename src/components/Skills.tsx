@@ -56,21 +56,21 @@ const Skills = () => {
                 <span className="text-cyan-400 font-bold text-2xl">→</span>
                 <div>
                   <p className="font-semibold text-foreground text-lg">Modern C++ Systems</p>
-                  <p className="text-base text-muted-foreground">C++17/20, performance-critical applications</p>
+                  <p className="text-base text-muted-foreground">C++17/20, real-time systems, performance optimization</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <span className="text-blue-400 font-bold text-2xl">→</span>
                 <div>
                   <p className="font-semibold text-foreground text-lg">HFT Infrastructure</p>
-                  <p className="text-base text-muted-foreground">Low-latency systems, lock-free structures</p>
+                  <p className="text-base text-muted-foreground">Low-latency systems, lock-free structures, multi-threading</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <span className="text-cyan-400 font-bold text-2xl">→</span>
                 <div>
-                  <p className="font-semibold text-foreground text-lg">Full-Stack Development</p>
-                  <p className="text-base text-muted-foreground">Backend, DevOps, ML/CV, Web technologies</p>
+                  <p className="font-semibold text-foreground text-lg">ML & Computer Vision</p>
+                  <p className="text-base text-muted-foreground">Real-time processing, image analysis, AI/ML systems</p>
                 </div>
               </div>
             </div>

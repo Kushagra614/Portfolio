@@ -13,33 +13,33 @@ interface Metric {
 
 const metrics: Metric[] = [
   {
-    label: 'Backtest Throughput',
+    label: 'Peak Throughput',
     value: 2.4,
     suffix: 'M events/sec',
     decimals: 1,
     icon: <Activity className="w-5 h-5" />,
-    description: 'Ultra-high throughput backtesting engine',
+    description: 'Real-time market data processing at scale',
+  },
+  {
+    label: 'P99 Latency',
+    value: 50,
+    suffix: 'ns',
+    icon: <Clock className="w-5 h-5" />,
+    description: 'Sub-microsecond latency guarantee',
   },
   {
     label: 'IPC Throughput',
     value: 100,
     suffix: 'K+ events/sec',
     icon: <Zap className="w-5 h-5" />,
-    description: 'Shared-memory inter-process communication',
+    description: 'Inter-process communication via shared memory',
   },
   {
-    label: 'Replay Jitter',
-    value: 847,
-    suffix: 'ns p99',
-    icon: <Clock className="w-5 h-5" />,
-    description: 'Nanosecond-level deterministic replay',
-  },
-  {
-    label: 'Latency Reduction',
+    label: 'Latency Variance',
     value: 35,
-    suffix: '%',
+    suffix: '% reduction',
     icon: <TrendingDown className="w-5 h-5" />,
-    description: 'Variance reduction through optimization',
+    description: 'Deterministic performance through optimization',
   },
 ];
 

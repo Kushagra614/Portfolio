@@ -13,33 +13,33 @@ interface Metric {
 
 const metrics: Metric[] = [
   {
-    label: 'Backtest Throughput',
+    label: 'Peak Throughput',
     value: 2.4,
     suffix: 'M events/sec',
     decimals: 1,
     icon: <Activity className="w-5 h-5" />,
-    description: 'Ultra-high throughput backtesting engine',
+    description: 'Real-time market data processing at scale',
+  },
+  {
+    label: 'P99 Latency',
+    value: 50,
+    suffix: 'ns',
+    icon: <Clock className="w-5 h-5" />,
+    description: 'Sub-microsecond latency guarantee',
   },
   {
     label: 'IPC Throughput',
     value: 100,
     suffix: 'K+ events/sec',
     icon: <Zap className="w-5 h-5" />,
-    description: 'Shared-memory inter-process communication',
+    description: 'Inter-process communication via shared memory',
   },
   {
-    label: 'Replay Jitter',
-    value: 847,
-    suffix: 'ns p99',
-    icon: <Clock className="w-5 h-5" />,
-    description: 'Nanosecond-level deterministic replay',
-  },
-  {
-    label: 'Latency Reduction',
+    label: 'Latency Variance',
     value: 35,
-    suffix: '%',
+    suffix: '% reduction',
     icon: <TrendingDown className="w-5 h-5" />,
-    description: 'Variance reduction through optimization',
+    description: 'Deterministic performance through optimization',
   },
 ];
 
@@ -48,19 +48,25 @@ const HFTShowcase = () => {
   const [latency, setLatency] = useState(0);
 
   useEffect(() => {
-    let eventInterval: NodeJS.Timeout;
-    let latencyInterval: NodeJS.Timeout;
-
-    eventInterval = setInterval(() => {
+    // Peak Throughput - continuous random walk (2.2M to 2.6M events/sec)
+    const eventInterval = setInterval(() => {
       setEventCount(prev => {
-        const newCount = prev + Math.floor(Math.random() * 50000) + 10000;
-        return newCount > 2000000 ? prev : newCount;
+        const randomChange = (Math.random() - 0.5) * 100000; // Random ±50K change
+        const newCount = prev + randomChange;
+        // Keep it between 2.2M and 2.6M
+        return Math.max(2200000, Math.min(2600000, newCount));
       });
-    }, 100);
+    }, 150);
 
-    latencyInterval = setInterval(() => {
-      setLatency(Math.floor(Math.random() * 50) + 10);
-    }, 500);
+    // P99 Latency - continuous random walk (35ns to 65ns)
+    const latencyInterval = setInterval(() => {
+      setLatency(prev => {
+        const randomChange = (Math.random() - 0.5) * 6; // Random ±3ns change
+        const newLatency = prev + randomChange;
+        // Keep it between 35ns and 65ns
+        return Math.max(35, Math.min(65, newLatency));
+      });
+    }, 200);
 
     return () => {
       clearInterval(eventInterval);
@@ -91,18 +97,6 @@ const HFTShowcase = () => {
             <h3 className="text-2xl font-bold text-foreground">Systems Architecture</h3>
             
             <div className="space-y-4">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Code className="w-5 h-5 text-cyan-400" />
-                <span>C++17/20 | Modern Systems Programming</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Lock className="w-5 h-5 text-blue-400" />
-                <span>Lock-free data structures & NUMA-aware scheduling</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Cpu className="w-5 h-5 text-cyan-400" />
-                <span>CPU affinity & Cache optimization</span>
-              </div>
             </div>
 
             {/* Key Achievements */}
@@ -111,15 +105,23 @@ const HFTShowcase = () => {
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">→</span>
-                  <span>Reduced latency variance by <strong className="text-primary">35%</strong> through cache optimization and NUMA-aware scheduling</span>
+                  <span>Architected high-performance simulation framework in C++ using Boost libraries, supporting <strong className="text-primary">10+ trading strategies</strong> and processing <strong className="text-primary">2M+ events/simulation</strong></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">→</span>
-                  <span>Designed lock-free IPC pipelines processing <strong className="text-primary">100K+ events/second</strong></span>
+                  <span>Engineered shared memory-based IPC pipelines using Boost.Interprocess, achieving <strong className="text-primary">100K+ events/second</strong> throughput between trading components</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">→</span>
-                  <span>Implemented SIMD-optimized order matching engine achieving <strong className="text-primary">&lt;50ns</strong> per match</span>
+                  <span>Optimized trading strategy execution with lock-free data structures, reducing <strong className="text-primary">latency variance by 35%</strong> through cache-aware memory layouts</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Built ultra-low latency cryptocurrency backtesting engine with <strong className="text-primary">microsecond execution</strong> and <strong className="text-primary">deterministic replay</strong> through cache-efficient data structures</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">→</span>
+                  <span>Implemented deterministic <strong className="text-primary">Orderbook Matching Engine</strong> supporting <strong className="text-primary">GTC, FAK, FOK, GFD, Market orders</strong> with thread-safe operations and real-time trade generation</span>
                 </li>
               </ul>
             </div>
@@ -179,12 +181,16 @@ const HFTShowcase = () => {
           {[
             { name: 'C++17/20', icon: '⚡' },
             { name: 'Linux Kernel', icon: '🐧' },
-            { name: 'Lock-Free', icon: '🔓' },
-            { name: 'SIMD', icon: '⚙️' },
-            { name: 'TCP/UDP', icon: '🌐' },
-            { name: 'NUMA', icon: '💾' },
-            { name: 'CPU Affinity', icon: '🎯' },
-            { name: 'Zero-Copy', icon: '⚡' }
+            { name: 'Atomics', icon: '⚛️' },
+            { name: 'Ring Buffers', icon: '🔄' },
+            { name: 'Cache-Aware', icon: '💾' },
+            { name: 'Memory Pooling', icon: '�️' },
+            { name: 'RAII Patterns', icon: '�️' },
+            { name: 'Multi-Threading', icon: '�' },
+            { name: 'Boost Library', icon: '�' },
+            { name: 'Zero-Copy', icon: '⚡' },
+            { name: 'FIX Protocol', icon: '📨' },
+            { name: 'WebSockets', icon: '🌐' }
           ].map((tech) => (
             <div 
               key={tech.name}
