@@ -233,7 +233,7 @@ export const SrhftInfra = () => (
       </div>
       <div className="p-2 rounded bg-primary/10">
         <p className="text-muted-foreground">Latency</p>
-        <p className="font-bold text-green-400">p99 &lt;50ns</p>
+        <p className="font-bold text-green-400">p99 &lt;500ns</p>
       </div>
     </div>
   </div>

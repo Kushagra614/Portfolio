@@ -14,17 +14,17 @@ interface Experience {
 const experiences: Experience[] = [
   {
     title: 'SRHFT',
-    company: 'SR HFT',
+    company: '',
     role: 'High-Frequency Trading Infrastructure Intern',
     period: 'Dec 2024 – Mar 2025',
-    description: 'Designed and implemented high-performance trading infrastructure with focus on ultra-low latency, lock-free data structures, and deterministic execution.',
+    description: 'Designed and implemented ultra-low latency trading infrastructure focusing on concurrent systems, real-time data processing, and deterministic execution patterns. Specialized in optimizing C++ systems for microsecond-level performance.',
     achievements: [
-      '35% latency variance reduction through NUMA-aware scheduling and cache optimization',
-      'Implemented lock-free IPC pipelines processing 100K+ events/second',
-      'Built simulation framework supporting 10+ concurrent strategies with 2M+ market data events',
-      'Achieved sub-microsecond order matching (<50ns per match) with SIMD optimization',
+      'Built high-performance trading simulation platform processing 2M+ market events with sub-millisecond latency',
+      'Engineered shared-memory pipelines achieving 100K+ events per second throughput',
+      'Optimized strategy execution using lock-free data structures, reducing latency variance by 20% through cache-aware memory layouts',
+      'Implemented deterministic order matching with real-time trade generation and comprehensive metrics tracking',
     ],
-    tech: ['C++', 'Boost.Interprocess', 'Lock-Free Structures', 'NUMA', 'CPU Affinity', 'Linux Kernel'],
+    tech: ['C++', 'Boost.Interprocess', 'Lock-Free Structures', 'Multithreading', 'Atomics', 'Cache-Awareness', 'Linux Kernel'],
     visualization: true,
   },
 ];
@@ -64,7 +64,7 @@ const Experience = () => {
                 <div className="rounded-2xl border border-cyan-500/30 bg-background/80 backdrop-blur-xl p-10">
                   <div className="flex items-start justify-between mb-6">
                     <div>
-                      <h3 className="text-4xl font-black text-foreground">{exp.title}</h3>
+                      <h3 className="text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{exp.title}</h3>
                       <p className="text-base text-cyan-400 font-semibold mt-2">{exp.company}</p>
                       <p className="text-sm text-muted-foreground mt-2">{exp.period}</p>
                     </div>

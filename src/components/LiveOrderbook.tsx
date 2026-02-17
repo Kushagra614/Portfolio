@@ -152,7 +152,7 @@ const LiveOrderbook = () => {
         </div>
         <div className="flex items-center gap-2">
           <TrendingDown className="w-4 h-4 text-primary" />
-          <span>&lt;50ns latency</span>
+          <span>&lt;500ns latency</span>
         </div>
       </div>
     </div>

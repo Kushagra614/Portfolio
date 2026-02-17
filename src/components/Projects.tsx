@@ -54,7 +54,7 @@ const projects = [
       'Multiple chat rooms with dynamic room creation',
       'Modern space-themed UI with responsive design',
     ],
-    highlight: '1.2K+ users across 50+ active rooms',
+    highlight: 'Real-time WebSocket architecture with optimized performance',
     github: 'https://github.com/kushagra614/ChatVerse',
     visualization: 'chatverse',
   },

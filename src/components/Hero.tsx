@@ -47,7 +47,7 @@ const Hero = () => {
             </div>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg md:text-xl bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent tracking-wide mb-6 font-semibold">
+            <p className="text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent tracking-wide mb-6 font-bold">
               Low Latency C++ Developer
             </p>
             

@@ -63,11 +63,11 @@ const Index = () => {
           </section>
 
           {/* Divider */}
-          <SectionDivider label="HFT_Showcase" />
+          <SectionDivider label="Experience" />
 
-          {/* HFT Showcase + Performance Metrics Section */}
+          {/* Experience Section */}
           <section className="relative z-10">
-            <HFTShowcase />
+            <Experience />
           </section>
 
           {/* Divider */}
@@ -79,11 +79,11 @@ const Index = () => {
           </section>
 
           {/* Divider */}
-          <SectionDivider label="Experience" />
+          <SectionDivider label="HFT_Showcase" />
 
-          {/* Experience Section */}
+          {/* HFT Showcase + Performance Metrics Section */}
           <section className="relative z-10">
-            <Experience />
+            <HFTShowcase />
           </section>
 
           {/* Divider */}

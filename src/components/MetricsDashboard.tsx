@@ -22,7 +22,7 @@ const metrics: Metric[] = [
   },
   {
     label: 'P99 Latency',
-    value: 50,
+    value: 500,
     suffix: 'ns',
     icon: <Clock className="w-5 h-5" />,
     description: 'Sub-microsecond latency guarantee',

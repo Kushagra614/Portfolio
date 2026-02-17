@@ -22,7 +22,7 @@ const metrics: Metric[] = [
   },
   {
     label: 'P99 Latency',
-    value: 50,
+    value: 500,
     suffix: 'ns',
     icon: <Clock className="w-5 h-5" />,
     description: 'Sub-microsecond latency guarantee',
@@ -58,13 +58,13 @@ const HFTShowcase = () => {
       });
     }, 150);
 
-    // P99 Latency - continuous random walk (35ns to 65ns)
+    // P99 Latency - continuous random walk (400ns to 600ns)
     const latencyInterval = setInterval(() => {
       setLatency(prev => {
-        const randomChange = (Math.random() - 0.5) * 6; // Random ±3ns change
+        const randomChange = (Math.random() - 0.5) * 100; // Random ±50ns change
         const newLatency = prev + randomChange;
-        // Keep it between 35ns and 65ns
-        return Math.max(35, Math.min(65, newLatency));
+        // Keep it between 400ns and 600ns
+        return Math.max(400, Math.min(600, newLatency));
       });
     }, 200);
 
@@ -105,23 +105,19 @@ const HFTShowcase = () => {
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">→</span>
-                  <span>Architected high-performance simulation framework in C++ using Boost libraries, supporting <strong className="text-primary">10+ trading strategies</strong> and processing <strong className="text-primary">2M+ events/simulation</strong></span>
+                  <span>Built high-performance trading simulation platform processing <strong className="text-primary">2M+ market events</strong> with <strong className="text-primary">sub-millisecond latency</strong></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">→</span>
-                  <span>Engineered shared memory-based IPC pipelines using Boost.Interprocess, achieving <strong className="text-primary">100K+ events/second</strong> throughput between trading components</span>
+                  <span>Engineered shared-memory pipelines achieving <strong className="text-primary">100K+ events per second</strong> throughput</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">→</span>
-                  <span>Optimized trading strategy execution with lock-free data structures, reducing <strong className="text-primary">latency variance by 35%</strong> through cache-aware memory layouts</span>
+                  <span>Optimized strategy execution using lock-free data structures, reducing <strong className="text-primary">latency variance by 20%</strong> through cache-aware memory layouts</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold">→</span>
-                  <span>Built ultra-low latency cryptocurrency backtesting engine with <strong className="text-primary">microsecond execution</strong> and <strong className="text-primary">deterministic replay</strong> through cache-efficient data structures</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold">→</span>
-                  <span>Implemented deterministic <strong className="text-primary">Orderbook Matching Engine</strong> supporting <strong className="text-primary">GTC, FAK, FOK, GFD, Market orders</strong> with thread-safe operations and real-time trade generation</span>
+                  <span>Implemented deterministic order matching with <strong className="text-primary">real-time trade generation</strong> and comprehensive metrics tracking</span>
                 </li>
               </ul>
             </div>
